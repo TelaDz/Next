@@ -7,7 +7,7 @@ import { getAllPosts } from '../lib/api'
 import Head from 'next/head'
 import { CMS_NAME } from '../lib/constants'
 import Post from '../types/post'
-
+import { signIn, signOut, useSession } from 'next-auth/client'
 type Props = {
   allPosts: Post[]
 }
@@ -15,12 +15,21 @@ type Props = {
 const Index = ({ allPosts }: Props) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
+  const [session, loading] = useSession()
   return (
     <>
       <Layout>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
+        {!session && <>
+            Not signed in <br />
+            <button onClick={signIn}>Sign in</button>
+          </>}
+          {session && <>
+            Signed in as {session.user.email} <br />
+            <button onClick={signOut}>Sign out</button>
+          </>}
         <Container>
           <Intro />
           {heroPost && (
@@ -34,6 +43,7 @@ const Index = ({ allPosts }: Props) => {
             />
           )}
           {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+
         </Container>
       </Layout>
     </>
