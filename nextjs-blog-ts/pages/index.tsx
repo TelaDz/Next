@@ -16,20 +16,22 @@ const Index = ({ allPosts }: Props) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
   const [session, loading] = useSession()
+  console.log('useSession',useSession);
+  
   return (
     <>
       <Layout>
         <Head>
           <title>Next.js Blog Example with {CMS_NAME}</title>
         </Head>
-        {!session && <>
+        {/* {!session && <>
             Not signed in <br />
             <button onClick={signIn}>Sign in</button>
           </>}
           {session && <>
             Signed in as {session.user.email} <br />
             <button onClick={signOut}>Sign out</button>
-          </>}
+          </>} */}
         <Container>
           <Intro />
           {heroPost && (
