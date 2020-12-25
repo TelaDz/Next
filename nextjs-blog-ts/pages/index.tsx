@@ -15,14 +15,13 @@ type Props = {
 const Index = ({ allPosts }: Props) => {
   const heroPost = allPosts[0]
   const morePosts = allPosts.slice(1)
-  const [session, loading] = useSession()
-  console.log('useSession',useSession);
-  
+  // const [session, loading] = useSession()
+
   return (
     <>
       <Layout>
         <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
+          <title>TS例子</title>
         </Head>
         {/* {!session && <>
             Not signed in <br />
