@@ -21,7 +21,10 @@ const Index = ({ allPosts }: Props) => {
     <>
       <Layout>
         <Head>
-          <title>TS例子</title>
+          <title>TS例子 
+
+            这是一次修改
+          </title>
         </Head>
         {/* {!session && <>
             Not signed in <br />
